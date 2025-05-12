@@ -30,10 +30,10 @@ const Hero = () => {
         </div>
         <div className="flex gap-4 justify-center">
           <a
-            href=""
+            href="#contact"
             className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full transition-colors"
           >
-            Resume
+            Contact Me
           </a>
           <a
             href="#projects"
