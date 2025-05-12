@@ -23,9 +23,11 @@ const Projects = () => {
       ],
       Live: "#",
       codeLink: "https://github.com/deepakchandra4/PluginVerse",
+      image: "/images/projects/pluginverse.png",
     },
     {
       title: "Search Meal App",
+      image: "/images/projects/search-meal.png",
       description:
         "A recipe search application using an external API, with caching and responsive design for better UX.",
       technologies: ["JavaScript", "MealDB API", "HTML/CSS", "Caching"],
@@ -42,6 +44,7 @@ const Projects = () => {
   const wordpressProjects = [
     {
       title: "Tan Workwear Website",
+      image: "/images/projects/tanworkwear.png",
       description:
         "A WordPress-based e-commerce platform featuring a custom theme and payment integration.",
       technologies: ["WordPress", "WooCommerce", "PHP", "JavaScript", "CSS"],
@@ -55,6 +58,7 @@ const Projects = () => {
     },
     {
       title: "Western Digital Marketing",
+      image: "/images/projects/westerndigital.png",
       description:
         "A digital marketing agency site designed to boost conversions through SEO and lead generation.",
       technologies: ["WordPress", "Elementor", "SEO", "Lead Generation"],
@@ -68,7 +72,10 @@ const Projects = () => {
     },
   ];
 
-  const renderProjectSection = (title: string, projects: typeof webProjects) => (
+  const renderProjectSection = (
+    title: string,
+    projects: typeof webProjects
+  ) => (
     <>
       <motion.h3
         initial={{ opacity: 0, y: -10 }}
@@ -96,13 +103,23 @@ const Projects = () => {
             viewport={{ once: true, amount: 0.2 }}
             className="bg-[#112240]/60 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg border border-[#1f2937] transition-transform hover:-translate-y-1 hover:shadow-2xl"
           >
-            <div className="relative h-48 bg-gradient-to-tr from-gray-800 to-gray-700 flex items-center justify-center text-gray-500 text-sm italic">
-              Project Image
+            <div className="relative h-80 overflow-hidden bg-gray-800">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+              />
             </div>
+
             <div className="p-6">
               <h3 className="text-2xl font-semibold text-white mb-2">
                 {title === "WordPress Projects" ? (
-                  <a href={project.Live} target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-300">
+                  <a
+                    href={project.Live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline text-blue-300"
+                  >
                     {project.title}
                   </a>
                 ) : (
