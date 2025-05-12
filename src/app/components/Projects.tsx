@@ -21,8 +21,8 @@ const Projects = () => {
         "Optimized backend queries to enhance performance",
         "Set up CI/CD pipeline for smoother deployments",
       ],
-      demoLink: "#",
-      codeLink: "#",
+      Live: "#",
+      codeLink: "https://github.com/deepakchandra4/PluginVerse",
     },
     {
       title: "Search Meal App",
@@ -34,8 +34,8 @@ const Projects = () => {
         "Implemented caching to reduce API calls",
         "Achieved mobile-responsive layout using semantic HTML & CSS",
       ],
-      demoLink: "#",
-      codeLink: "#",
+      Live: "https://search-meal-amber.vercel.app/",
+      codeLink: "https://github.com/deepakchandra4/search-meal",
     },
   ];
 
@@ -50,7 +50,7 @@ const Projects = () => {
         "Integrated secure payment options",
         "Optimized performance with lazy loading and image compression",
       ],
-      demoLink: "#",
+      Live: "https://tanworkwear.com.au/",
       codeLink: "#",
     },
     {
@@ -63,7 +63,7 @@ const Projects = () => {
         "Included lead capture forms to generate inquiries",
         "Applied SEO best practices for visibility",
       ],
-      demoLink: "#",
+      Live: "https://westerndigitalmarketing.com.au/",
       codeLink: "#",
     },
   ];
@@ -101,7 +101,13 @@ const Projects = () => {
             </div>
             <div className="p-6">
               <h3 className="text-2xl font-semibold text-white mb-2">
-                {project.title}
+                {title === "WordPress Projects" ? (
+                  <a href={project.Live} target="_blank" rel="noopener noreferrer" className="hover:underline text-blue-300">
+                    {project.title}
+                  </a>
+                ) : (
+                  project.title
+                )}
               </h3>
               <p className="text-gray-400 mb-4">{project.description}</p>
 
@@ -129,17 +135,19 @@ const Projects = () => {
 
               <div className="flex gap-4 mt-4">
                 <a
-                  href={project.demoLink}
+                  href={project.Live}
                   className="text-blue-400 hover:text-blue-300 text-sm font-medium underline"
                 >
-                  View Demo
+                  Live
                 </a>
-                <a
-                  href={project.codeLink}
-                  className="text-blue-400 hover:text-blue-300 text-sm font-medium underline"
-                >
-                  Source Code
-                </a>
+                {title !== "WordPress Projects" && (
+                  <a
+                    href={project.codeLink}
+                    className="text-blue-400 hover:text-blue-300 text-sm font-medium underline"
+                  >
+                    Source Code
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
