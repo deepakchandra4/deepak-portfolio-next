@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+  
 const Hero = () => {
   return (
     <section className="h-[80vh] flex items-center justify-center bg-gradient-to-b from-[#040D12] to-[#0A1929] text-white" id="hero">

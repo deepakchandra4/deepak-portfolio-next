@@ -1,11 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const containerStagger = {
   visible: {
     transition: {
