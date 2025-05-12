@@ -3,7 +3,7 @@
 const Hero = () => {
   return (
     <section className="h-[80vh] flex items-center justify-center bg-gradient-to-b from-[#040D12] to-[#0A1929] text-white" id="hero">
-      <div className="container mx-auto px-4 text-center">
+      <div className="container mx-auto max-md:mt-20 mt-10 px-4 text-center">
         <h1 className="text-5xl md:text-7xl font-bold mb-6">
           Hi, I'm <span className="text-blue-400">Deepak</span>
         </h1>
