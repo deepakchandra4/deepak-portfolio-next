@@ -39,6 +39,28 @@ const Projects = () => {
       Live: "https://search-meal-amber.vercel.app/",
       codeLink: "https://github.com/deepakchandra4/search-meal",
     },
+    // {
+    //   title: "Farm Equipment Rental App",
+    //   image: "/images/projects/farm-equip-rental.png",
+    //   description:
+    //     "A full-stack web application enabling farmers and equipment owners to list, browse, and rent agricultural machinery.",
+    //   technologies: [
+    //     "Node.js",
+    //     "Express",
+    //     "MongoDB",
+    //     "JWT",
+    //     "NextJs",
+    //     "REST API",
+    //   ],
+    //   achievements: [
+    //     "Implemented secure login/signup using JWT and role-based access control",
+    //     "Designed RESTful APIs for equipment listing, booking, and user management",
+    //     "Built a responsive UI for browsing equipment by category, location, and availability",
+    //     "Added features like image uploads, dynamic filters, and owner-user linkage",
+    //   ],
+    //   Live: "", // Replace with actual live link if available
+    //   codeLink: "https://github.com/deepakchandra4/farm-equipment-rental-app", // Adjust if repo name differs
+    // },
   ];
 
   const wordpressProjects = [
@@ -68,6 +90,21 @@ const Projects = () => {
         "Applied SEO best practices for visibility",
       ],
       Live: "https://westerndigitalmarketing.com.au/",
+      codeLink: "#",
+    },
+    {
+      title: "Chippy Cabinets Website",
+      image: "/images/projects/chippicabinets.png",
+      description:
+        "A premium joinery website showcasing custom cabinetry services across Melbourne with a focus on craftsmanship and client trust.",
+      technologies: ["WordPress", "Elementor", "Custom CSS", "SEO"],
+      achievements: [
+        "Built a conversion-driven WordPress website highlighting services and unique selling points",
+        "Emphasized expert craftsmanship, customer satisfaction, and diverse installations",
+        "Created sections like 'Why Choose Us' and 'Built for Life' for trust-building",
+        "Optimized layout and images for performance and SEO",
+      ],
+      Live: "https://chippicabinets.com.au/",
       codeLink: "#",
     },
   ];
