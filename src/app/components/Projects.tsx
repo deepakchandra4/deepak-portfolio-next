@@ -94,7 +94,7 @@ const Projects = () => {
     },
     {
       title: "Chippy Cabinets Website",
-      image: "/images/projects/chippicabinets.png",
+      image: "/images/projects/chippyCabinets.png",
       description:
         "A premium joinery website showcasing custom cabinetry services across Melbourne with a focus on craftsmanship and client trust.",
       technologies: ["WordPress", "Elementor", "Custom CSS", "SEO"],
@@ -104,7 +104,7 @@ const Projects = () => {
         "Created sections like 'Why Choose Us' and 'Built for Life' for trust-building",
         "Optimized layout and images for performance and SEO",
       ],
-      Live: "https://chippicabinets.com.au/",
+      Live: "https://chippycabinets.com.au/",
       codeLink: "#",
     },
   ];
