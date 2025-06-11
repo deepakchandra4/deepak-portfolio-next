@@ -8,7 +8,6 @@ const containerStagger = {
     },
   },
 };
-//ds
 const Projects = () => {
   const webProjects = [
     {
@@ -105,6 +104,22 @@ const Projects = () => {
         "Optimized layout and images for performance and SEO",
       ],
       Live: "https://chippycabinets.com.au/",
+      codeLink: "#",
+    },
+    {
+      title: "Aariv Diamonds & Jewellery Website",
+      image: "/images/projects/aarivjewellery.png", // Ensure the image exists in your assets
+      description:
+        "A WordPress-based e-commerce platform for showcasing traditional and contemporary jewellery with a premium shopping experience.",
+      technologies: ["WordPress", "WooCommerce", "PHP", "JavaScript", "CSS"],
+      achievements: [
+        "Created a custom-designed WordPress theme tailored for jewellery e-commerce",
+        "Integrated secure WooCommerce payment and checkout functionalities",
+        "Showcased diverse collections including solitaires, kundan, polki, and gemstone jewellery",
+        "Optimized website speed and SEO with lazy loading and compressed media assets",
+        "Implemented responsive UI with high-quality visuals for mobile and desktop users",
+      ],
+      Live: "https://aarivjewellery.com/", // Replace if domain is different
       codeLink: "#",
     },
   ];
