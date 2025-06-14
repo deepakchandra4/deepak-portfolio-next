@@ -123,7 +123,7 @@ const Projects = () => {
       codeLink: "#",
     },
   ];
-//ee
+//
   const renderProjectSection = (
     title: string,
     projects: typeof webProjects
