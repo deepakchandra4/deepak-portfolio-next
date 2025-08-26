@@ -11,39 +11,26 @@ import {
   SiTailwindcss,
   SiRedux,
   SiWordpress,
+  SiShopify,
+  SiCanva
 } from "react-icons/si";
 
-
-
 const skills = [
-  {
-    name: "JavaScript (ES6+)",
-    icon: <SiJavascript className="text-yellow-400 text-3xl" />,
-  },
-  {
-    name: "TypeScript",
-    icon: <SiTypescript className="text-blue-400 text-3xl" />,
-  },
+  { name: "JavaScript (ES6+)", icon: <SiJavascript className="text-yellow-400 text-3xl" /> },
+  { name: "TypeScript", icon: <SiTypescript className="text-blue-400 text-3xl" /> },
   { name: "React.js", icon: <FaReact className="text-cyan-400 text-3xl" /> },
   { name: "Next.js", icon: <SiNextdotjs className="text-white text-3xl" /> },
   { name: "Node.js", icon: <FaNodeJs className="text-green-500 text-3xl" /> },
-  {
-    name: "Express.js",
-    icon: <SiExpress className="text-gray-300 text-3xl" />,
-  },
+  { name: "Express.js", icon: <SiExpress className="text-gray-300 text-3xl" /> },
   { name: "MongoDB", icon: <SiMongodb className="text-green-400 text-3xl" /> },
   { name: "MySQL", icon: <SiMysql className="text-blue-500 text-3xl" /> },
-  {
-    name: "Tailwind CSS",
-    icon: <SiTailwindcss className="text-teal-400 text-3xl" />,
-  },
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400 text-3xl" /> },
   { name: "Redux", icon: <SiRedux className="text-purple-400 text-3xl" /> },
-  {
-    name: "Git/GitHub",
-    icon: <FaGitAlt className="text-orange-400 text-3xl" />,
-  },
+  { name: "Git/GitHub", icon: <FaGitAlt className="text-orange-400 text-3xl" /> },
   { name: "Docker", icon: <FaDocker className="text-blue-300 text-3xl" /> },
-  { name: "Wordpress", icon: <SiWordpress className="text-blue-300 text-3xl" /> },
+  { name: "WordPress", icon: <SiWordpress className="text-blue-300 text-3xl" /> },
+  { name: "Shopify", icon: <SiShopify className="text-green-500 text-3xl" /> },
+  { name: "Canva", icon: <SiCanva className="text-blue-400 text-3xl" /> },
 ];
 
 export default function Skills() {

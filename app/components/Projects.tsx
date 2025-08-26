@@ -1,15 +1,29 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const containerStagger = {
   visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.2 },
   },
 };
+
 const Projects = () => {
   const webProjects = [
+    {
+      title: "Weather Forecast App",
+      image: "/images/projects/weather-app.png",
+      description:
+        "A real-time weather forecasting app built with Next.js and OpenWeather API, featuring responsive design.",
+      technologies: ["Next.js", "JavaScript", "API", "CSS"],
+      achievements: [
+        "Integrated OpenWeather API for accurate forecasts",
+        "Implemented responsive UI for mobile and desktop",
+        "Optimized performance using Next.js features like ISR",
+      ],
+      Live: "https://weather-forecast-next-app-seven.vercel.app/",
+      codeLink: "https://github.com/deepakchandra4/weather-forecast-next-app",
+    },
     {
       title: "PluginVerse",
       description:
@@ -38,28 +52,6 @@ const Projects = () => {
       Live: "https://search-meal-amber.vercel.app/",
       codeLink: "https://github.com/deepakchandra4/search-meal",
     },
-    // {
-    //   title: "Farm Equipment Rental App",
-    //   image: "/images/projects/farm-equip-rental.png",
-    //   description:
-    //     "A full-stack web application enabling farmers and equipment owners to list, browse, and rent agricultural machinery.",
-    //   technologies: [
-    //     "Node.js",
-    //     "Express",
-    //     "MongoDB",
-    //     "JWT",
-    //     "NextJs",
-    //     "REST API",
-    //   ],
-    //   achievements: [
-    //     "Implemented secure login/signup using JWT and role-based access control",
-    //     "Designed RESTful APIs for equipment listing, booking, and user management",
-    //     "Built a responsive UI for browsing equipment by category, location, and availability",
-    //     "Added features like image uploads, dynamic filters, and owner-user linkage",
-    //   ],
-    //   Live: "", // Replace with actual live link if available
-    //   codeLink: "https://github.com/deepakchandra4/farm-equipment-rental-app", // Adjust if repo name differs
-    // },
   ];
 
   const wordpressProjects = [
@@ -108,7 +100,7 @@ const Projects = () => {
     },
     {
       title: "Aariv Diamonds & Jewellery Website",
-      image: "/images/projects/aarivjewellery.png", // Ensure the image exists in your assets
+      image: "/images/projects/aarivjewellery.png",
       description:
         "A WordPress-based e-commerce platform for showcasing traditional and contemporary jewellery with a premium shopping experience.",
       technologies: ["WordPress", "WooCommerce", "PHP", "JavaScript", "CSS"],
@@ -119,14 +111,36 @@ const Projects = () => {
         "Optimized website speed and SEO with lazy loading and compressed media assets",
         "Implemented responsive UI with high-quality visuals for mobile and desktop users",
       ],
-      Live: "https://aarivjewellery.com/", // Replace if domain is different
+      Live: "https://aarivjewellery.com/",
+      codeLink: "#",
+    },
+    {
+      title: "Gopalak Farms Shopify Website",
+      image: "/images/projects/gopalakfarms.png",
+      description:
+        "A Shopify-based e-commerce store for premium farm products with a clean, responsive design and smooth shopping experience.",
+      technologies: ["Shopify", "Liquid", "CSS", "JavaScript"],
+      achievements: [
+        "Built a clean, responsive Shopify store",
+        "Customized product pages using Liquid templates",
+        "Optimized store performance and mobile UX",
+      ],
+      Live: "https://gopalakfarms.com/",
       codeLink: "#",
     },
   ];
-//
+
   const renderProjectSection = (
     title: string,
-    projects: typeof webProjects
+    projects: {
+      title: string;
+      image: string;
+      description: string;
+      technologies: string[];
+      achievements: string[];
+      Live: string;
+      codeLink: string;
+    }[]
   ) => (
     <>
       <motion.h3
@@ -144,7 +158,7 @@ const Projects = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid md:grid-cols-2 gap-10"
+        className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         {projects.map((project, index) => (
           <motion.div
@@ -153,19 +167,22 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.2 }}
-            className="bg-[#112240]/60 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg border border-[#1f2937] transition-transform hover:-translate-y-1 hover:shadow-2xl"
+            className="bg-[#112240]/70 backdrop-blur-md rounded-xl overflow-hidden shadow-lg border border-[#1f2937] hover:-translate-y-1 hover:scale-105 hover:shadow-2xl transition-transform duration-300"
           >
-            <div className="relative h-80 overflow-hidden bg-gray-800">
-              <img
+            <div className="relative h-64 overflow-hidden bg-gray-800">
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="object-contain w-full h-full hover:scale-105 transition-transform duration-300"
+                fill
+                className="object-contain hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority={index === 0}
               />
             </div>
 
-            <div className="p-6">
-              <h3 className="text-2xl font-semibold text-white mb-2">
-                {title === "WordPress Projects" ? (
+            <div className="p-5">
+              <h3 className="text-xl font-semibold text-white mb-2">
+                {title.includes("WordPress") || title.includes("Shopify") ? (
                   <a
                     href={project.Live}
                     target="_blank"
@@ -178,41 +195,43 @@ const Projects = () => {
                   project.title
                 )}
               </h3>
-              <p className="text-gray-400 mb-4">{project.description}</p>
+              <p className="text-gray-400 mb-3 text-sm">
+                {project.description}
+              </p>
 
-              <div className="mb-4">
-                <h4 className="text-sm font-semibold text-blue-400 mb-2">
+              <div className="mb-3">
+                <h4 className="text-sm font-semibold text-blue-400 mb-1">
                   Highlights:
                 </h4>
-                <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                <ul className="list-disc list-inside text-gray-300 text-xs space-y-1">
                   {project.achievements.map((item, idx) => (
                     <li key={idx}>{item}</li>
                   ))}
                 </ul>
               </div>
 
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-3">
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium"
+                    className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="flex gap-4 mt-4">
+              <div className="flex gap-4 mt-2 text-sm">
                 <a
                   href={project.Live}
-                  className="text-blue-400 hover:text-blue-300 text-sm font-medium underline"
+                  className="text-blue-400 hover:text-blue-300 font-medium underline"
                 >
                   Live
                 </a>
-                {title !== "WordPress Projects" && (
+                {!title.includes("WordPress") && !title.includes("Shopify") && (
                   <a
                     href={project.codeLink}
-                    className="text-blue-400 hover:text-blue-300 text-sm font-medium underline"
+                    className="text-blue-400 hover:text-blue-300 font-medium underline"
                   >
                     Source Code
                   </a>
@@ -244,8 +263,11 @@ const Projects = () => {
         {/* Web Projects */}
         {renderProjectSection("Web Projects", webProjects)}
 
-        {/* WordPress Projects */}
-        {renderProjectSection("WordPress Projects", wordpressProjects)}
+        {/* WordPress & Shopify Projects */}
+        {renderProjectSection(
+          "WordPress & Shopify Projects",
+          wordpressProjects
+        )}
       </div>
     </section>
   );
