@@ -25,6 +25,21 @@ const Projects = () => {
       codeLink: "https://github.com/deepakchandra4/weather-forecast-next-app",
     },
     {
+      title: "Blog App — Full-Stack Blogging Platform",
+      image: "/images/projects/blog-app.png",
+      description:
+        "A secure and modern full-stack blogging platform with authentication, real-time features, and responsive UI.",
+      technologies: ["Next.js", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS"],
+      achievements: [
+        "Implemented JWT authentication with bcrypt for secure user login",
+        "Designed a responsive UI with glassmorphism and animations",
+        "Added nested comments, tag filtering, and advanced search",
+        "Integrated Cloudinary for image hosting and optimized performance with Next.js Image",
+      ],
+      Live: "https://blog-app-omega-wheat.vercel.app/",
+      codeLink: "https://github.com/deepakchandra4/modern-blog-next-app/",
+    },
+    {
       title: "PluginVerse",
       description:
         "A component-sharing platform built with authentication and a CI/CD pipeline for streamlined deployment.",
@@ -53,6 +68,24 @@ const Projects = () => {
       codeLink: "https://github.com/deepakchandra4/search-meal",
     },
   ];
+
+  const backendProjects = [
+    {
+      title: "BookShelf API",
+      description:
+        "A beginner-friendly RESTful API built using Node.js and Express.js to manage a simple directory of books. Supports basic CRUD operations (GET, POST, PUT, DELETE).",
+      technologies: ["Node.js", "Express.js", "REST API", "MongoDB (optional)"],
+      achievements: [
+        "Implemented CRUD operations for managing books",
+        "Designed RESTful routes for scalable backend development",
+        "Allowed flexibility with in-memory JSON storage or MongoDB database",
+        "Built as a learning project for backend API development",
+      ],
+      Live: "#", // placeholder, will be ignored
+      codeLink: "https://github.com/deepakchandra4/bookshelf-api",
+    },
+  ];
+
 
   const wordpressProjects = [
     {
@@ -131,44 +164,46 @@ const Projects = () => {
   ];
 
   const renderProjectSection = (
-    title: string,
-    projects: {
-      title: string;
-      image: string;
-      description: string;
-      technologies: string[];
-      achievements: string[];
-      Live: string;
-      codeLink: string;
-    }[]
-  ) => (
-    <>
-      <motion.h3
-        initial={{ opacity: 0, y: -10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="text-2xl text-white font-semibold mb-6 mt-12"
-      >
-        {title}
-      </motion.h3>
+  title: string,
+  projects: {
+    title: string;
+    image?: string; // optional now
+    description: string;
+    technologies: string[];
+    achievements: string[];
+    Live?: string;
+    codeLink?: string;
+  }[]
+) => (
+  <>
+    <motion.h3
+      initial={{ opacity: 0, y: -10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="text-2xl text-white font-semibold mb-6 mt-12"
+    >
+      {title}
+    </motion.h3>
 
-      <motion.div
-        variants={containerStagger}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-      >
-        {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.2 }}
-            className="bg-[#112240]/70 backdrop-blur-md rounded-xl overflow-hidden shadow-lg border border-[#1f2937] hover:-translate-y-1 hover:scale-105 hover:shadow-2xl transition-transform duration-300"
-          >
+    <motion.div
+      variants={containerStagger}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+    >
+      {projects.map((project, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          className="bg-[#112240]/70 backdrop-blur-md rounded-xl overflow-hidden shadow-lg border border-[#1f2937] hover:-translate-y-1 hover:scale-105 hover:shadow-2xl transition-transform duration-300"
+        >
+          {/* Only render image if provided */}
+          {project.image && (
             <div className="relative h-64 overflow-hidden bg-gray-800">
               <Image
                 src={project.image}
@@ -179,70 +214,77 @@ const Projects = () => {
                 priority={index === 0}
               />
             </div>
+          )}
 
-            <div className="p-5">
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {title.includes("WordPress") || title.includes("Shopify") ? (
-                  <a
-                    href={project.Live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline text-blue-300"
-                  >
-                    {project.title}
-                  </a>
-                ) : (
-                  project.title
-                )}
-              </h3>
-              <p className="text-gray-400 mb-3 text-sm">
-                {project.description}
-              </p>
+          <div className="p-5">
+            <h3 className="text-xl font-semibold text-white mb-2">
+              {title.includes("WordPress") || title.includes("Shopify") ? (
+                <a
+                  href={project.Live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline text-blue-300"
+                >
+                  {project.title}
+                </a>
+              ) : (
+                project.title
+              )}
+            </h3>
+            <p className="text-gray-400 mb-3 text-sm">
+              {project.description}
+            </p>
 
-              <div className="mb-3">
-                <h4 className="text-sm font-semibold text-blue-400 mb-1">
-                  Highlights:
-                </h4>
-                <ul className="list-disc list-inside text-gray-300 text-xs space-y-1">
-                  {project.achievements.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mb-3">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium"
-                  >
-                    {tech}
-                  </span>
+            <div className="mb-3">
+              <h4 className="text-sm font-semibold text-blue-400 mb-1">
+                Highlights:
+              </h4>
+              <ul className="list-disc list-inside text-gray-300 text-xs space-y-1">
+                {project.achievements.map((item, idx) => (
+                  <li key={idx}>{item}</li>
                 ))}
-              </div>
+              </ul>
+            </div>
 
-              <div className="flex gap-4 mt-2 text-sm">
+            <div className="flex flex-wrap gap-2 mb-3">
+              {project.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex gap-4 mt-2 text-sm">
+              {/* Only render Live if valid */}
+              {project.Live && project.Live !== "#" && (
                 <a
                   href={project.Live}
                   className="text-blue-400 hover:text-blue-300 font-medium underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Live
                 </a>
-                {!title.includes("WordPress") && !title.includes("Shopify") && (
-                  <a
-                    href={project.codeLink}
-                    className="text-blue-400 hover:text-blue-300 font-medium underline"
-                  >
-                    Source Code
-                  </a>
-                )}
-              </div>
+              )}
+              {/* Show Source Code if present */}
+              {project.codeLink && !title.includes("WordPress") && !title.includes("Shopify") && (
+                <a
+                  href={project.codeLink}
+                  className="text-blue-400 hover:text-blue-300 font-medium underline"
+                >
+                  Source Code
+                </a>
+              )}
             </div>
-          </motion.div>
-        ))}
-      </motion.div>
-    </>
-  );
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  </>
+);
 
   return (
     <section
@@ -263,6 +305,9 @@ const Projects = () => {
         {/* Web Projects */}
         {renderProjectSection("Web Projects", webProjects)}
 
+        {/* Backend Projects */}
+        {renderProjectSection("Backend Projects", backendProjects)}
+
         {/* WordPress & Shopify Projects */}
         {renderProjectSection(
           "WordPress & Shopify Projects",
@@ -272,5 +317,6 @@ const Projects = () => {
     </section>
   );
 };
+
 
 export default Projects;
