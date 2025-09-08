@@ -2,6 +2,7 @@
 const About = () => {
   return (
     <section
+    //ff
       id="about"
       className="py-20 bg-gradient-to-b from-[#0A1929] to-[#040D12]"
     >
