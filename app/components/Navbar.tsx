@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+import NextLink from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -40,7 +41,7 @@ const Navbar = () => {
       >
         <div className="section-padding flex justify-between items-center">
           <div className="flex-shrink-0 cursor-pointer relative z-50">
-            <Link
+            <ScrollLink
               to="hero"
               smooth={true}
               duration={500}
@@ -48,13 +49,13 @@ const Navbar = () => {
             >
               <span className="text-white">Deepak</span>
               <span className="text-primary animate-pulse">.</span>
-            </Link>
+            </ScrollLink>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
-              <Link
+              <ScrollLink
                 key={link.name}
                 to={link.to}
                 smooth={true}
@@ -65,19 +66,15 @@ const Navbar = () => {
                 className="text-gray-300 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-white/5 cursor-pointer"
               >
                 {link.name}
-              </Link>
+              </ScrollLink>
             ))}
-            <Link
-              to="resume"
-              smooth={true}
-              duration={500}
-              spy={true}
-              offset={-80}
-              activeClass="!text-primary bg-primary/10"
+            <NextLink
+              href="/resume.pdf"
+              target="_blank"
               className="ml-4 px-5 py-2 border border-primary text-primary hover:bg-primary/10 rounded-full text-sm font-medium transition-all"
             >
               Resume
-            </Link>
+            </NextLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -104,7 +101,7 @@ const Navbar = () => {
           >
             <div className="flex flex-col space-y-6 text-center">
               {navLinks.map((link) => (
-                <Link
+                <ScrollLink
                   key={link.name}
                   to={link.to}
                   smooth={true}
@@ -113,15 +110,15 @@ const Navbar = () => {
                   className="text-2xl text-gray-300 hover:text-primary font-medium cursor-pointer transition-colors"
                 >
                   {link.name}
-                </Link>
+                </ScrollLink>
               ))}
-              <Link
-                to="/resume.pdf"
+              <NextLink
+                href="/resume.pdf"
                 target="_blank"
                 className="px-8 py-3 border border-primary text-primary text-xl rounded-full hover:bg-primary/10 transition-all mt-4"
               >
                 Resume
-              </Link>
+              </NextLink>
             </div>
           </motion.div>
         )}

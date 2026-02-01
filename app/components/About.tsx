@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
-import { Link } from 'react-scroll';
+import Link from 'next/link';
 
 const About = () => {
   return (
@@ -41,12 +41,6 @@ const About = () => {
 
             <div className="flex justify-center gap-6">
               <Link
-                to="contact"
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-80}
-                activeClass="!text-primary bg-primary/10"
                 href="https://www.linkedin.com/in/deepakchandra4"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -56,12 +50,6 @@ const About = () => {
                 <span>LinkedIn</span>
               </Link>
               <Link
-                to="contact"
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-80}
-                activeClass="!text-primary bg-primary/10"
                 href="https://github.com/deepakchandra4"
                 target="_blank"
                 rel="noopener noreferrer"

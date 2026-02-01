@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import { Link } from "react-scroll"
+import Link from 'next/link';
 
 const containerStagger = {
   visible: {
@@ -227,12 +227,12 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                   {project.Live && project.Live !== "#" && (
-                    <Link to={project.Live} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-primary hover:scale-110 transition-all">
+                    <Link href={project.Live} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-primary hover:scale-110 transition-all">
                       <FaExternalLinkAlt />
                     </Link>
                   )}
                   {project.codeLink && project.codeLink !== "#" && (
-                    <Link to={project.codeLink} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-black hover:scale-110 transition-all">
+                    <Link href={project.codeLink} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-black hover:scale-110 transition-all">
                       <FaGithub size={20} />
                     </Link>
                   )}

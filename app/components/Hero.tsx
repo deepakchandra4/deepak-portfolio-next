@@ -1,7 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
-import { FaGithub, FaLinkedin, FaTwitter, FaArrowDown, FaCode, FaDatabase, FaServer, FaRobot } from 'react-icons/fa';
+import { Link as ScrollLink } from 'react-scroll';
+import NextLink from 'next/link';
+import { FaGithub, FaLinkedin, FaArrowDown, FaCode, FaDatabase, FaServer, FaRobot } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 const Hero = () => {
@@ -53,7 +54,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center mb-12"
           >
-            <Link
+            <ScrollLink
               to="projects"
               smooth={true}
               offset={-70}
@@ -62,8 +63,8 @@ const Hero = () => {
             >
               View Work
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
-            </Link>
-            <Link
+            </ScrollLink>
+            <ScrollLink
               to="contact"
               smooth={true}
               offset={-70}
@@ -71,7 +72,7 @@ const Hero = () => {
               className="px-8 py-3 bg-transparent border border-gray-700 text-gray-300 rounded-full hover:border-white hover:text-white transition-all cursor-pointer whitespace-nowrap"
             >
               Contact Me
-            </Link>
+            </ScrollLink>
           </motion.div>
 
           {/* Social Links */}
@@ -81,14 +82,20 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex gap-6 justify-center md:justify-start"
           >
-            {[FaGithub, FaLinkedin, FaXTwitter].map((Icon, index) => (
-              <Link
+            {[
+              { Icon: FaGithub, href: "https://github.com/deepakchandra4" },
+              { Icon: FaLinkedin, href: "https://www.linkedin.com/in/deepakchandra4" },
+              { Icon: FaXTwitter, href: "https://x.com/deepakchandra41" }
+            ].map(({ Icon, href }, index) => (
+              <NextLink
                 key={index}
-                to="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-accent text-2xl transition-colors transform hover:scale-110"
               >
                 <Icon />
-              </Link>
+              </NextLink>
             ))}
           </motion.div>
         </div>
@@ -179,9 +186,9 @@ const Hero = () => {
         transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
       >
-        <Link to="about" smooth={true} offset={-70} duration={500} className="cursor-pointer text-gray-500 hover:text-white transition-colors">
+        <ScrollLink to="about" smooth={true} offset={-70} duration={500} className="cursor-pointer text-gray-500 hover:text-white transition-colors">
           <FaArrowDown />
-        </Link>
+        </ScrollLink>
       </motion.div>
     </section>
   );

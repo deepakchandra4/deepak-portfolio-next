@@ -2,7 +2,8 @@
 
 import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { Link } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
+import NextLink from 'next/link';
 
 const Footer = () => {
   return (
@@ -22,15 +23,15 @@ const Footer = () => {
                 { icon: FaLinkedin, href: "https://www.linkedin.com/in/deepak-chandra-maurya-a03a21266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
                 { icon: FaXTwitter, href: "https://x.com/deepakchandra41" }
               ].map((social, index) => (
-                <Link
+                <NextLink
                   key={index}
-                  to={social.href}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gray-800/50 p-2.5 rounded-full hover:bg-primary hover:text-white transition-all duration-300 border border-gray-700/50 hover:border-primary"
                 >
                   <social.icon className="w-4 h-4" />
-                </Link>
+                </NextLink>
               ))}
             </div>
           </div>
@@ -46,7 +47,7 @@ const Footer = () => {
                 { name: 'Contact', to: 'contact' }
               ].map((item) => (
                 <li key={item.name}>
-                  <Link
+                  <ScrollLink
                     to={item.to}
                     smooth={true}
                     duration={500}
@@ -54,7 +55,7 @@ const Footer = () => {
                   >
                     <span className="h-[1px] w-0 bg-primary group-hover:w-3 transition-all"></span>
                     {item.name}
-                  </Link>
+                  </ScrollLink>
                 </li>
               ))}
             </ul>
@@ -82,15 +83,15 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <FaEnvelope className="text-primary" />
-                <Link to="mailto:deepakchandra4551@gmail.com" className="hover:text-primary transition-colors">deepakchandra4551@gmail.com</Link>
+                <NextLink href="mailto:deepakchandra4551@gmail.com" className="hover:text-primary transition-colors">deepakchandra4551@gmail.com</NextLink>
               </div>
               <div className="flex items-center gap-3">
                 <FaPhone className="text-primary" />
-                <Link to="tel:+919120279300" className="hover:text-primary transition-colors">+91 9120279300</Link>
+                <NextLink href="tel:+919120279300" className="hover:text-primary transition-colors">+91 9120279300</NextLink>
               </div>
               <div className="flex items-center gap-3">
                 <FaWhatsapp className="text-primary" />
-                <Link to="https://wa.me/919120979300" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Chat on WhatsApp</Link>
+                <NextLink href="https://wa.me/919120979300" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Chat on WhatsApp</NextLink>
               </div>
             </div>
           </div>
