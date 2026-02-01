@@ -113,20 +113,20 @@ const Projects = () => {
       Live: "https://tanworkwear.com.au/",
       codeLink: "#",
     },
-    // {
-    //   title: "Western Digital Marketing",
-    //   image: "/images/projects/westerndigital.png",
-    //   description:
-    //     "A digital marketing agency site designed to boost conversions through SEO and lead generation.",
-    //   technologies: ["WordPress", "Elementor", "SEO", "Lead Generation"],
-    //   achievements: [
-    //     "Built a responsive agency website with Elementor",
-    //     "Included lead capture forms to generate inquiries",
-    //     "Applied SEO best practices for visibility",
-    //   ],
-    //   Live: "https://westerndigitalmarketing.com.au/",
-    //   codeLink: "#",
-    // },
+    {
+      title: "Western Digital Marketing",
+      image: "/images/projects/westerndigital.png",
+      description:
+        "A digital marketing agency site designed to boost conversions through SEO and lead generation.",
+      technologies: ["WordPress", "Elementor", "SEO", "Lead Generation"],
+      achievements: [
+        "Built a responsive agency website with Elementor",
+        "Included lead capture forms to generate inquiries",
+        "Applied SEO best practices for visibility",
+      ],
+      Live: "https://westerndigitalmarketing.com.au/",
+      codeLink: "#",
+    },
     {
       title: "Chippy Cabinets Website",
       image: "/images/projects/chippyCabinets.png",
