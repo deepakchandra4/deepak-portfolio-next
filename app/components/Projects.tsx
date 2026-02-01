@@ -1,14 +1,25 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useRef } from "react";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { Link } from "react-scroll"
 
 const containerStagger = {
   visible: {
-    transition: { staggerChildren: 0.2 },
+    transition: { staggerChildren: 0.15 },
   },
 };
 
 const Projects = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
   const webProjects = [
     {
       title: "Weather Forecast App",
@@ -36,23 +47,23 @@ const Projects = () => {
         "Added nested comments, tag filtering, and advanced search",
         "Integrated Cloudinary for image hosting and optimized performance with Next.js Image",
       ],
-      Live: "https://blog-app-omega-wheat.vercel.app/",
-      codeLink: "https://github.com/deepakchandra4/modern-blog-next-app/",
+      Live: "https://modern-blog-next-app.vercel.app/",
+      codeLink: "https://github.com/deepakchandra4/modern-blog-next-app",
     },
-    {
-      title: "PluginVerse",
-      description:
-        "A component-sharing platform built with authentication and a CI/CD pipeline for streamlined deployment.",
-      technologies: ["React", "Node.js", "MongoDB", "JWT", "CI/CD"],
-      achievements: [
-        "Built a component-sharing platform with secure authentication",
-        "Optimized backend queries to enhance performance",
-        "Set up CI/CD pipeline for smoother deployments",
-      ],
-      Live: "#",
-      codeLink: "https://github.com/deepakchandra4/PluginVerse",
-      image: "/images/projects/pluginverse.png",
-    },
+    // {
+    //   title: "PluginVerse",
+    //   description:
+    //     "A component-sharing platform built with authentication and a CI/CD pipeline for streamlined deployment.",
+    //   technologies: ["React", "Node.js", "MongoDB", "JWT", "CI/CD"],
+    //   achievements: [
+    //     "Built a component-sharing platform with secure authentication",
+    //     "Optimized backend queries to enhance performance",
+    //     "Set up CI/CD pipeline for smoother deployments",
+    //   ],
+    //   Live: "#",
+    //   codeLink: "https://github.com/deepakchandra4/PluginVerse",
+    //   image: "/images/projects/pluginverse.png",
+    // },
     {
       title: "Search Meal App",
       image: "/images/projects/search-meal.png",
@@ -73,8 +84,8 @@ const Projects = () => {
     {
       title: "BookShelf API",
       description:
-        "A beginner-friendly RESTful API built using Node.js and Express.js to manage a simple directory of books. Supports basic CRUD operations (GET, POST, PUT, DELETE).",
-      technologies: ["Node.js", "Express.js", "REST API", "MongoDB (optional)"],
+        "A beginner-friendly RESTful API built using Node.js and Express.js to manage a simple directory of books. Supports basic CRUD operations.",
+      technologies: ["Node.js", "Express.js", "REST API", "MongoDB"],
       achievements: [
         "Implemented CRUD operations for managing books",
         "Designed RESTful routes for scalable backend development",
@@ -102,30 +113,30 @@ const Projects = () => {
       Live: "https://tanworkwear.com.au/",
       codeLink: "#",
     },
-    {
-      title: "Western Digital Marketing",
-      image: "/images/projects/westerndigital.png",
-      description:
-        "A digital marketing agency site designed to boost conversions through SEO and lead generation.",
-      technologies: ["WordPress", "Elementor", "SEO", "Lead Generation"],
-      achievements: [
-        "Built a responsive agency website with Elementor",
-        "Included lead capture forms to generate inquiries",
-        "Applied SEO best practices for visibility",
-      ],
-      Live: "https://westerndigitalmarketing.com.au/",
-      codeLink: "#",
-    },
+    // {
+    //   title: "Western Digital Marketing",
+    //   image: "/images/projects/westerndigital.png",
+    //   description:
+    //     "A digital marketing agency site designed to boost conversions through SEO and lead generation.",
+    //   technologies: ["WordPress", "Elementor", "SEO", "Lead Generation"],
+    //   achievements: [
+    //     "Built a responsive agency website with Elementor",
+    //     "Included lead capture forms to generate inquiries",
+    //     "Applied SEO best practices for visibility",
+    //   ],
+    //   Live: "https://westerndigitalmarketing.com.au/",
+    //   codeLink: "#",
+    // },
     {
       title: "Chippy Cabinets Website",
       image: "/images/projects/chippyCabinets.png",
       description:
-        "A premium joinery website showcasing custom cabinetry services across Melbourne with a focus on craftsmanship and client trust.",
+        "A premium joinery website showcasing custom cabinetry services across Melbourne with a focus on craftsmanship.",
       technologies: ["WordPress", "Elementor", "Custom CSS", "SEO"],
       achievements: [
-        "Built a conversion-driven WordPress website highlighting services and unique selling points",
-        "Emphasized expert craftsmanship, customer satisfaction, and diverse installations",
-        "Created sections like 'Why Choose Us' and 'Built for Life' for trust-building",
+        "Built a conversion-driven WordPress website",
+        "Emphasized expert craftsmanship and customer satisfaction",
+        "Created sections like 'Why Choose Us' for trust-building",
         "Optimized layout and images for performance and SEO",
       ],
       Live: "https://chippycabinets.com.au/",
@@ -138,11 +149,10 @@ const Projects = () => {
         "A WordPress-based e-commerce platform for showcasing traditional and contemporary jewellery with a premium shopping experience.",
       technologies: ["WordPress", "WooCommerce", "PHP", "JavaScript", "CSS"],
       achievements: [
-        "Created a custom-designed WordPress theme tailored for jewellery e-commerce",
+        "Created a custom-designed WordPress theme",
         "Integrated secure WooCommerce payment and checkout functionalities",
-        "Showcased diverse collections including solitaires, kundan, polki, and gemstone jewellery",
-        "Optimized website speed and SEO with lazy loading and compressed media assets",
-        "Implemented responsive UI with high-quality visuals for mobile and desktop users",
+        "Optimized website speed and SEO",
+        "Implemented responsive UI with high-quality visuals",
       ],
       Live: "https://aarivjewellery.com/",
       codeLink: "#",
@@ -163,160 +173,147 @@ const Projects = () => {
     },
   ];
 
-  const renderProjectSection = (
-  title: string,
-  projects: {
+  interface Project {
     title: string;
-    image?: string; // optional now
+    image?: string;
     description: string;
     technologies: string[];
     achievements: string[];
     Live?: string;
     codeLink?: string;
-  }[]
-) => (
-  <>
-    <motion.h3
-      initial={{ opacity: 0, y: -10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="text-2xl text-white font-semibold mb-6 mt-12"
-    >
-      {title}
-    </motion.h3>
+  }
 
-    <motion.div
-      variants={containerStagger}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-    >
-      {projects.map((project, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="bg-[#112240]/70 backdrop-blur-md rounded-xl overflow-hidden shadow-lg border border-[#1f2937] hover:-translate-y-1 hover:scale-105 hover:shadow-2xl transition-transform duration-300"
-        >
-          {/* Only render image if provided */}
-          {project.image && (
-            <div className="relative h-64 overflow-hidden bg-gray-800">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-contain hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={index === 0}
-              />
-            </div>
-          )}
+  const renderProjectSection = (
+    title: string,
+    projects: Project[]
+  ) => (
+    <>
+      <motion.h3
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-secondary to-primary mb-8 mt-16 border-l-4 border-primary pl-4"
+      >
+        {title}
+      </motion.h3>
 
-          <div className="p-5">
-            <h3 className="text-xl font-semibold text-white mb-2">
-              {title.includes("WordPress") || title.includes("Shopify") ? (
-                <a
-                  href={project.Live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline text-blue-300"
-                >
-                  {project.title}
-                </a>
-              ) : (
-                project.title
-              )}
-            </h3>
-            <p className="text-gray-400 mb-3 text-sm">
-              {project.description}
-            </p>
+      <motion.div
+        variants={containerStagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } }
+            }}
+            whileHover={{ y: -10 }}
+            className="glass rounded-xl overflow-hidden group h-full flex flex-col"
+          >
+            {/* Only render image if provided */}
+            {project.image && (
+              <div className="relative h-56 overflow-hidden bg-gray-900/50">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  {project.Live && project.Live !== "#" && (
+                    <Link to={project.Live} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-primary hover:scale-110 transition-all">
+                      <FaExternalLinkAlt />
+                    </Link>
+                  )}
+                  {project.codeLink && project.codeLink !== "#" && (
+                    <Link to={project.codeLink} target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 backdrop-blur-md rounded-full text-white hover:bg-white hover:text-black hover:scale-110 transition-all">
+                      <FaGithub size={20} />
+                    </Link>
+                  )}
+                </div>
+              </div>
+            )}
 
-            <div className="mb-3">
-              <h4 className="text-sm font-semibold text-blue-400 mb-1">
-                Highlights:
-              </h4>
-              <ul className="list-disc list-inside text-gray-300 text-xs space-y-1">
-                {project.achievements.map((item, idx) => (
-                  <li key={idx}>{item}</li>
+            <div className="p-6 flex-grow flex flex-col">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.technologies.slice(0, 4).map((tech: string) => (
+                  <span
+                    key={tech}
+                    className="px-2 py-1 bg-primary/10 border border-primary/20 text-primary rounded text-xs font-medium"
+                  >
+                    {tech}
+                  </span>
                 ))}
-              </ul>
-            </div>
+              </div>
 
-            <div className="flex flex-wrap gap-2 mb-3">
-              {project.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+              <p className="text-gray-400 mb-4 text-sm leading-relaxed flex-grow">
+                {project.description}
+              </p>
 
-            <div className="flex gap-4 mt-2 text-sm">
-              {/* Only render Live if valid */}
-              {project.Live && project.Live !== "#" && (
-                <a
-                  href={project.Live}
-                  className="text-blue-400 hover:text-blue-300 font-medium underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live
-                </a>
-              )}
-              {/* Show Source Code if present */}
-              {project.codeLink && !title.includes("WordPress") && !title.includes("Shopify") && (
-                <a
-                  href={project.codeLink}
-                  className="text-blue-400 hover:text-blue-300 font-medium underline"
-                >
-                  Source Code
-                </a>
-              )}
+              <div className="pt-4 border-t border-gray-800">
+                <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                  Key Features
+                </h4>
+                <ul className="list-disc list-inside text-gray-400 text-xs space-y-1">
+                  {project.achievements.slice(0, 2).map((item: string, idx: number) => (
+                    <li key={idx} className="line-clamp-1">{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-        </motion.div>
-      ))}
-    </motion.div>
-  </>
-);
+          </motion.div>
+        ))}
+      </motion.div>
+    </>
+  );
 
   return (
     <section
       id="projects"
-      className="py-20 bg-gradient-to-b from-[#0A192F] to-[#040D12]"
+      className="py-24 relative overflow-hidden"
+      ref={ref}
     >
-      <div className="container mx-auto px-4">
-        <motion.h2
+      <div className="absolute inset-0 bg-gradient-to-b from-[#020617] to-background pointer-events-none" />
+
+      {/* Decorative blobs */}
+      <motion.div style={{ y }} className="absolute top-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <motion.div style={{ y: useTransform(scrollYProgress, [0, 1], [-100, 100]) }} className="absolute bottom-20 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+
+      <div className="section-padding relative z-10">
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-white mb-12"
+          className="text-center mb-16"
         >
-          Projects
-        </motion.h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4">
+            <span className="text-white">Featured </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              Projects
+            </span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            A showcase of my recent work, ranging from full-stack web applications to eCommerce solutions.
+          </p>
+        </motion.div>
 
-        {/* Web Projects */}
-        {renderProjectSection("Web Projects", webProjects)}
-
-        {/* Backend Projects */}
-        {renderProjectSection("Backend Projects", backendProjects)}
-
-        {/* WordPress & Shopify Projects */}
-        {renderProjectSection(
-          "WordPress & Shopify Projects",
-          wordpressProjects
-        )}
+        {renderProjectSection("Web Applications", webProjects)}
+        {renderProjectSection("Backend API", backendProjects)}
+        {renderProjectSection("CMS & eCommerce", wordpressProjects)}
       </div>
     </section>
   );
 };
-
 
 export default Projects;

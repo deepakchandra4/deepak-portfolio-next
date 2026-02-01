@@ -1,83 +1,132 @@
 'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-scroll';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Home', to: 'hero' },
+    { name: 'About', to: 'about' },
+    { name: 'Projects', to: 'projects' },
+    { name: 'Contact', to: 'contact' },
+  ];
 
   return (
-    <nav className="bg-[#040D12] shadow-md fixed w-full z-50 scroll-smooth">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-white cursor-pointer">
-              Deepak
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-heavy py-3 shadow-lg' : 'bg-transparent py-5'
+          }`}
+      >
+        <div className="section-padding flex justify-between items-center">
+          <div className="flex-shrink-0 cursor-pointer relative z-50">
+            <Link
+              to="hero"
+              smooth={true}
+              duration={500}
+              className="text-2xl font-bold font-mono tracking-tighter"
+            >
+              <span className="text-white">Deepak</span>
+              <span className="text-primary animate-pulse">.</span>
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-300 hover:text-white">
-              Home
-            </Link>
-            <Link href="#about" className="text-gray-300 hover:text-white">
-              About
-            </Link>
-            <Link href="#projects" className="text-gray-300 hover:text-white">
-              Projects
-            </Link>
-            <Link href="#contact" className="text-gray-300 hover:text-white">
-              Contact
+          <div className="hidden md:flex items-center space-x-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.to}
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass="!text-primary bg-primary/10"
+                className="text-gray-300 hover:text-white px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-white/5 cursor-pointer"
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Link
+              to="resume"
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={-80}
+              activeClass="!text-primary bg-primary/10"
+              className="ml-4 px-5 py-2 border border-primary text-primary hover:bg-primary/10 rounded-full text-sm font-medium transition-all"
+            >
+              Resume
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden z-50">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-white focus:outline-none"
+              className="text-gray-300 hover:text-white focus:outline-none p-2"
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMenuOpen ? (
-                  <path d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
           </div>
         </div>
-      </div>
+      </motion.nav>
 
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-[#040D12]">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link href="/" className="block px-3 py-2 text-gray-300 hover:text-white" onClick={() => setIsMenuOpen(false)}>
-              Home
-            </Link>
-            <Link href="#about" className="block px-3 py-2 text-gray-300 hover:text-white" onClick={() => setIsMenuOpen(false)}>
-              About
-            </Link>
-            <Link href="#projects" className="block px-3 py-2 text-gray-300 hover:text-white" onClick={() => setIsMenuOpen(false)}>
-              Projects
-            </Link>
-            <Link href="#contact" className="block px-3 py-2 text-gray-300 hover:text-white" onClick={() => setIsMenuOpen(false)}>
-              Contact
-            </Link>
-          </div>
-        </div>
-      )}
-    </nav>
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed inset-0 z-40 bg-[#050a14] md:hidden flex items-center justify-center bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/20 via-background to-background"
+          >
+            <div className="flex flex-col space-y-6 text-center">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.to}
+                  smooth={true}
+                  duration={500}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-2xl text-gray-300 hover:text-primary font-medium cursor-pointer transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <Link
+                to="/resume.pdf"
+                target="_blank"
+                className="px-8 py-3 border border-primary text-primary text-xl rounded-full hover:bg-primary/10 transition-all mt-4"
+              >
+                Resume
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
