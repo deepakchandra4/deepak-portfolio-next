@@ -69,7 +69,7 @@ const Navbar = () => {
               </ScrollLink>
             ))}
             <NextLink
-              href="/resume.pdf"
+              href="/DeepakCV.pdf"
               target="_blank"
               className="ml-4 px-5 py-2 border border-primary text-primary hover:bg-primary/10 rounded-full text-sm font-medium transition-all"
             >

@@ -40,7 +40,7 @@ const Projects = () => {
       image: "/images/projects/blog-app.png",
       description:
         "A secure and modern full-stack blogging platform with authentication, real-time features, and responsive UI.",
-      technologies: ["Next.js", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS"],
+      technologies: ["Next.js", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS", "JWT", "Cloudinary"],
       achievements: [
         "Implemented JWT authentication with bcrypt for secure user login",
         "Designed a responsive UI with glassmorphism and animations",
