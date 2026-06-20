@@ -39,15 +39,15 @@ const Hero = () => {
             <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto md:mx-0 mb-8" />
 
             <h3 className="text-2xl md:text-3xl text-gray-300 mb-6 font-light">
-              Full Stack Developer <span className="text-secondary">|</span> DevOps Learner <span className="text-secondary">|</span> AI Enthusiast
+              Full Stack Developer <span className="text-secondary">|</span> AI-Focused Learner
             </h3>
 
             <p className="text-lg text-gray-400 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed">
-              Building scalable, high-performance web applications with the
-              <span className="text-accent"> MERN stack</span>, exploring
-              <span className="text-accent"> DevOps workflows</span>, and integrating
-              <span className="text-accent"> AI-driven features</span>.
-              Focused on clean architecture, performance, and modern user experiences.
+              Building modern web applications with
+              <span className="text-accent"> full-stack development</span> while exploring
+              <span className="text-accent"> Generative AI</span>,
+              <span className="text-accent"> LLM workflows</span>, and
+              <span className="text-accent"> AI-powered tools</span>.
             </p>
           </motion.div>
 

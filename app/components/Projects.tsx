@@ -78,6 +78,20 @@ const Projects = () => {
       Live: "https://search-meal-amber.vercel.app/",
       codeLink: "https://github.com/deepakchandra4/search-meal",
     },
+    {
+      title: "Author Portfolio Website",
+      image: "/images/projects/manoj-kumar-sharma.png",
+      description:
+        "A professional author portfolio website built for Manoj Kumar Sharma to showcase his books, biography, achievements, and literary journey through a modern and responsive web experience.",
+      technologies: ["Next.js", "JavaScript", "Tailwind CSS", "Responsive Design"],
+      achievements: [
+        "Designed a clean and engaging author-focused website layout",
+        "Showcased books, biography, awards, and personal brand presence",
+        "Built a responsive interface for smooth browsing across devices",
+      ],
+      Live: "https://manojkumarsharma.in/",
+      codeLink: "",
+    },
   ];
 
   const backendProjects = [
