@@ -22,6 +22,19 @@ const Projects = () => {
 
   const webProjects = [
     {
+      title: "MIRRRO FILMS Website",
+      image: "/images/projects/mirrro-films.png",
+      description:
+        "A cinematic and responsive production house website for MIRRRO FILMS, redesigned to showcase purpose-driven storytelling, featured films, and socially impactful cinema through a modern and interactive user experience.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      achievements: [
+        "Redesigned the existing website with a premium cinematic UI while preserving the brand’s original color palette",
+        "Added smooth animations, scroll reveal effects, interactive sections, and responsive layouts for all devices",
+        "Enhanced content structure with dedicated sections for MIRRRO FILMS, featured film highlights, mission, vision, and storytelling focus",
+      ],
+      Live: "https://www.mirrrofilms.com/",
+    },
+    {
       title: "Weather Forecast App",
       image: "/images/projects/weather-app.png",
       description:
