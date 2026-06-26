@@ -18,7 +18,7 @@ interface Project {
 const webProjects: Project[] = [
   {
     title: "GapCheck AI — AI Resume-JD Match Analyzer",
-    image: "/images/projects/gapcheck-ai.png",
+    image: "/images/projects/gapcheck-ai-v2.png",
     description:
       "GapCheck AI is a high-fidelity Next.js web application designed to evaluate candidate alignment against target job descriptions. By integrating deep analysis parameters powered by Google Gemini, the platform parses PDF resumes, isolates core skill sets, details matching and missing competencies, evaluates ATS compliance, and generates predictive interview prep guides to empower candidates to optimize their profiles.",
     technologies: ["Next.js", "TypeScript", "Google Gemini API", "Tailwind CSS", "Framer Motion", "PDF Parser"],
