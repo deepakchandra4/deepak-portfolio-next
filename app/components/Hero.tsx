@@ -1,163 +1,242 @@
 'use client';
-import { motion } from 'framer-motion';
+
+import { useRef, useState, useEffect } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
 import NextLink from 'next/link';
-import { FaGithub, FaLinkedin, FaArrowDown, FaCode, FaDatabase, FaServer, FaRobot } from 'react-icons/fa';
+import { FaArrowDown, FaTerminal, FaPlay, FaCode, FaDatabase, FaServer, FaRobot } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 
-const Hero = () => {
+export default function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  // Mouse tilt tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { damping: 50, stiffness: 200 });
+  const springY = useSpring(mouseY, { damping: 50, stiffness: 200 });
+
+  // Rotate container slightly based on mouse
+  const rotateX = useTransform(springY, [-0.5, 0.5], [15, -15]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-15, 15]);
+
+  useEffect(() => {
+    setIsClient(true);
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      mouseX.set(x);
+      mouseY.set(y);
+    };
+
+    const handleMouseLeave = () => {
+      mouseX.set(0);
+      mouseY.set(0);
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, [mouseX, mouseY]);
+
   return (
     <section
       id="hero"
+      ref={containerRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
+      style={{ perspective: 1000 }}
     >
-      {/* Background Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-[pulse_4s_ease-in-out_infinite]" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] animate-[pulse_6s_ease-in-out_infinite]" />
+      {/* Background Glow */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[140px] animate-[pulse_6s_ease-in-out_infinite]" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-[140px] animate-[pulse_8s_ease-in-out_infinite]" />
 
       <div className="section-padding z-10 w-full grid md:grid-cols-2 gap-12 items-center">
-
-        {/* Text Content */}
-        <div className="text-center md:text-left order-2 md:order-1">
+        {/* Left text column */}
+        <div className="text-center md:text-left order-2 md:order-1 flex flex-col justify-center">
+          {/* Animated Command Prompt Header */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono mb-6 mx-auto md:mx-0 w-fit"
           >
-            <h2 className="text-xl md:text-2xl text-accent font-mono mb-4">Hello World, I&apos;m</h2>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-              <span className="text-white">Deepak</span>
-              <span className="text-primary animate-pulse">.</span>
-            </h1>
+            <FaTerminal className="text-primary text-[10px]" />
+            <span>AI SYSTEM ONLINE // EXEC_CODE</span>
           </motion.div>
 
-          <motion.div
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-2xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-[1.1]"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+              AI-First Software Engineer
+            </span>
+            <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
+              GenAI Application Developer
+            </span>
+          </motion.h1>
+
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="text-gray-300 text-sm md:text-base font-mono font-medium tracking-tight mb-6 max-w-xl mx-auto md:mx-0 border-l border-primary/30 pl-4 text-left"
+          >
+            Building Production-Ready Web Apps with AI, Full-Stack Engineering & Modern Developer Tools
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-gray-400 text-sm md:text-base max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed font-light text-justify"
           >
-            <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto md:mx-0 mb-8" />
+            I combine software engineering fundamentals with an AI-first workflow to rapidly design, build, and ship modern applications. I specialize in Next.js, TypeScript, React, Node.js, and Python.
+          </motion.p>
 
-            <h3 className="text-2xl md:text-3xl text-gray-300 mb-6 font-light">
-              Full Stack Developer <span className="text-secondary">|</span> AI-Focused Learner
-            </h3>
-
-            <p className="text-lg text-gray-400 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed">
-              Building modern web applications with
-              <span className="text-accent"> full-stack development</span> while exploring
-              <span className="text-accent"> Generative AI</span>,
-              <span className="text-accent"> LLM workflows</span>, and
-              <span className="text-accent"> AI-powered tools</span>.
-            </p>
-          </motion.div>
-
-
+          {/* Interactive Liquid / Glowing Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center mb-12"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start items-center mb-12"
           >
-            <ScrollLink
-              to="projects"
-              smooth={true}
-              offset={-70}
-              duration={500}
-              className="px-8 py-3 bg-primary/10 border border-primary/50 text-white rounded-full hover:bg-primary/20 transition-all cursor-pointer backdrop-blur-sm group whitespace-nowrap"
-            >
-              View Work
-              <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
-            </ScrollLink>
-            <ScrollLink
-              to="contact"
-              smooth={true}
-              offset={-70}
-              duration={500}
-              className="px-8 py-3 bg-transparent border border-gray-700 text-gray-300 rounded-full hover:border-white hover:text-white transition-all cursor-pointer whitespace-nowrap"
-            >
-              Contact Me
-            </ScrollLink>
+            {/* View My Projects Button */}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative group w-full sm:w-auto">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-secondary to-accent rounded-full blur opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+              <ScrollLink
+                to="projects"
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className="relative flex items-center justify-center gap-2 px-8 py-3 bg-black rounded-full text-white text-sm font-semibold cursor-pointer border border-white/10 group-hover:border-transparent transition-all duration-300 w-full sm:w-auto"
+              >
+                <FaPlay className="text-primary text-[10px]" />
+                <span>View My Projects</span>
+              </ScrollLink>
+            </motion.div>
+
+            {/* Let's Build Something Button */}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+              <ScrollLink
+                to="contact"
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className="flex items-center justify-center gap-2 px-8 py-3 bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-white/10 hover:text-white rounded-full text-gray-300 text-sm font-semibold transition-all duration-300 cursor-pointer w-full sm:w-auto"
+              >
+                <FaTerminal className="text-accent text-[10px]" />
+                <span>Let&apos;s Build Something</span>
+              </ScrollLink>
+            </motion.div>
           </motion.div>
 
           {/* Social Links */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="flex gap-6 justify-center md:justify-start"
           >
             {[
-              { Icon: FaGithub, href: "https://github.com/deepakchandra4" },
-              { Icon: FaLinkedin, href: "https://www.linkedin.com/in/deepakchandra4" },
-              { Icon: FaXTwitter, href: "https://x.com/deepakchandra41" }
-            ].map(({ Icon, href }, index) => (
-              <NextLink
-                key={index}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-accent text-2xl transition-colors transform hover:scale-110"
-              >
-                <Icon />
-              </NextLink>
-            ))}
+              { icon: SiGithub, href: 'https://github.com/deepakchandra4' },
+              { icon: SiLinkedin, href: 'https://www.linkedin.com/in/deepakchandra4' },
+              { icon: FaXTwitter, href: 'https://x.com/deepakchandra41' },
+            ].map((social, idx) => {
+              const IconComponent = social.icon;
+              return (
+                <NextLink
+                  key={idx}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-primary text-xl transition-all duration-300 transform hover:scale-110"
+                >
+                  <IconComponent />
+                </NextLink>
+              );
+            })}
           </motion.div>
         </div>
 
-        {/* Abstract Developer Illustration */}
+        {/* Right side original moving circle layout with cursor coordinate tilt parallax */}
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="order-1 md:order-2 flex justify-center relative"
+          className="order-1 md:order-2 flex justify-center relative select-none"
         >
-          {/* Main Container */}
-          <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] flex items-center justify-center">
-
+          <motion.div
+            style={{
+              rotateX: isClient ? rotateX : 0,
+              rotateY: isClient ? rotateY : 0,
+              transformStyle: 'preserve-3d',
+            }}
+            className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] flex items-center justify-center"
+          >
             {/* Background Glows */}
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-[80px] animate-pulse" />
-            <div className="absolute inset-0 bg-secondary/20 rounded-full blur-[60px] animate-pulse delay-75" />
+            <div className="absolute inset-0 bg-primary/5 rounded-full blur-[120px] animate-pulse pointer-events-none" />
+            <div className="absolute inset-0 bg-secondary/5 rounded-full blur-[100px] animate-pulse delay-75 pointer-events-none" />
 
             {/* Rotating Rings (Orbitals) */}
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute w-full h-full border border-primary/30 rounded-full border-dashed"
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              className="absolute w-full h-full border border-primary/20 rounded-full border-dashed animate-[spin_20s_linear_infinite]"
             />
             <motion.div
               animate={{ rotate: -360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[80%] h-[80%] border border-secondary/30 rounded-full border-dashed"
+              transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+              className="absolute w-[80%] h-[80%] border border-secondary/20 rounded-full border-dashed animate-[spin_25s_linear_infinite_reverse]"
             />
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="absolute w-[60%] h-[60%] border border-accent/20 rounded-full"
+              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+              className="absolute w-[60%] h-[60%] border border-white/5 rounded-full animate-[spin_30s_linear_infinite]"
             />
 
             {/* Floating Tech Icons */}
             <div className="absolute inset-0 animate-[spin_40s_linear_infinite]">
               {/* Top */}
-              <motion.div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-6 bg-[#0A1929] p-3 rounded-xl border border-primary/50 text-cyan-400 shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+              <motion.div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-6 bg-[#050816]/90 p-3 rounded-xl border border-white/10 text-cyan-400/90 shadow-md">
                 <FaCode size={24} />
               </motion.div>
               {/* Bottom */}
-              <motion.div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-6 bg-[#0A1929] p-3 rounded-xl border border-secondary/50 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.3)]">
+              <motion.div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-6 bg-[#050816]/90 p-3 rounded-xl border border-white/10 text-indigo-400/90 shadow-md">
                 <FaDatabase size={24} />
               </motion.div>
               {/* Left */}
-              <motion.div className="absolute top-1/2 left-0 -translate-x-6 -translate-y-1/2 bg-[#0A1929] p-3 rounded-xl border border-accent/50 text-cyan-200 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+              <motion.div className="absolute top-1/2 left-0 -translate-x-6 -translate-y-1/2 bg-[#050816]/90 p-3 rounded-xl border border-white/10 text-cyan-200/90 shadow-md">
                 <FaServer size={24} />
               </motion.div>
               {/* Right */}
-              <motion.div className="absolute top-1/2 right-0 translate-x-6 -translate-y-1/2 bg-[#0A1929] p-3 rounded-xl border border-primary/50 text-green-400 shadow-[0_0_15px_rgba(74,222,128,0.3)]">
+              <motion.div className="absolute top-1/2 right-0 translate-x-6 -translate-y-1/2 bg-[#050816]/90 p-3 rounded-xl border border-white/10 text-green-400/90 shadow-md">
                 <FaRobot size={24} />
               </motion.div>
             </div>
 
             {/* Central Core */}
-            <div className="relative z-10 w-32 h-32 bg-[#050a14] rounded-full border-2 border-primary/50 flex items-center justify-center shadow-[0_0_30px_rgba(56,189,248,0.4)]">
-              <div className="text-6xl text-white font-bold tracking-tighter animate-pulse">
+            <div className="relative z-10 w-32 h-32 bg-[#050816] rounded-full border border-white/10 flex items-center justify-center shadow-[0_4px_24px_rgba(0,0,0,0.6)]">
+              {/* Subtle internal ring */}
+              <div className="absolute inset-1 rounded-full border border-primary/10" />
+              <div className="text-6xl text-white font-bold tracking-tighter animate-pulse font-mono relative z-10">
                 &lt;/&gt;
               </div>
             </div>
@@ -165,22 +244,20 @@ const Hero = () => {
             {/* Floating Code Snippets (Decorative) */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/4 right-1/4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-md border border-gray-700 text-[10px] text-gray-400 font-mono"
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute top-1/4 right-1/4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-md border border-white/5 text-[10px] text-gray-400 font-mono"
             >
               const dev = future;
             </motion.div>
             <motion.div
               animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-1/4 left-1/4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-md border border-gray-700 text-[10px] text-gray-400 font-mono"
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              className="absolute bottom-1/4 left-1/4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-md border border-white/5 text-[10px] text-gray-400 font-mono"
             >
               git commit -m &quot;innovation&quot;
             </motion.div>
-
-          </div>
+          </motion.div>
         </motion.div>
-
       </div>
 
       {/* Scroll Indicator */}
@@ -190,12 +267,16 @@ const Hero = () => {
         transition={{ delay: 1, duration: 1 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
       >
-        <ScrollLink to="about" smooth={true} offset={-70} duration={500} className="cursor-pointer text-gray-500 hover:text-white transition-colors">
+        <ScrollLink
+          to="about"
+          smooth={true}
+          offset={-80}
+          duration={500}
+          className="cursor-pointer text-gray-500 hover:text-white transition-colors"
+        >
           <FaArrowDown />
         </ScrollLink>
       </motion.div>
     </section>
   );
-};
-
-export default Hero;
+}
