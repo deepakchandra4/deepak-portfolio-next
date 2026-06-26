@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Outfit, Space_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import BackgroundEffects from "./components/BackgroundEffects";
-import CustomCursor from "./components/CustomCursor";
+import Navbar from "./components/sections/Navbar";
+import Footer from "./components/sections/Footer";
+import BackgroundEffects from "./components/ui/BackgroundEffects";
+import CustomCursor from "./components/ui/CustomCursor";
 
 const outfit = Outfit({
   variable: "--font-outfit",
