@@ -12,6 +12,7 @@
   --font-sans: var(--font-outfit), var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-space-mono), var(--font-geist-mono), monospace;
 }
+/* dfdf */
 
 @theme inline {
   --color-background: var(--background);
@@ -154,4 +155,4 @@ body {
 .mask-radial {
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-}
+}
