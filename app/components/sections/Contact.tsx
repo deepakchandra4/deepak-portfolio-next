@@ -77,6 +77,53 @@ export default function Contact() {
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="section-padding relative z-10">
+        {/* Pre-Contact Call to Action Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="glass-card p-8 md:p-12 rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 max-w-5xl mx-auto text-center relative overflow-hidden mb-20"
+        >
+          <div className="absolute inset-0 bg-grid-lines opacity-5 pointer-events-none" />
+          {/* Decorative glows inside banner */}
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-primary/10 rounded-full blur-[40px] pointer-events-none" />
+          <div className="absolute bottom-0 right-1/4 w-32 h-32 bg-accent/10 rounded-full blur-[40px] pointer-events-none" />
+
+          <h4 className="text-2xl md:text-3xl font-extrabold text-white mb-3 tracking-tight">
+            Ready to build your AI product?
+          </h4>
+          <p className="text-gray-300 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed mb-8">
+            Let&apos;s discuss your idea. I help companies turn complex requirements into production-ready software systems, automated tools, and scalable SaaS solutions.
+          </p>
+
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            {/* Book a Consultation */}
+            <a
+              href="mailto:deepakchandra4551@gmail.com?subject=AI%20Product%20Consultation%20Request"
+              className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white text-xs font-bold uppercase tracking-wider rounded-xl hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300 cursor-pointer border border-primary/25 text-center w-full sm:w-auto"
+            >
+              Book a Consultation
+            </a>
+
+            {/* Email Me */}
+            <a
+              href="mailto:deepakchandra4551@gmail.com"
+              className="px-6 py-3 bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-white/10 text-gray-300 hover:text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 cursor-pointer text-center w-full sm:w-auto"
+            >
+              Email Me
+            </a>
+
+            {/* Schedule a Call */}
+            <a
+              href="tel:+919120279300"
+              className="px-6 py-3 bg-transparent hover:bg-white/5 text-gray-400 hover:text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 cursor-pointer border border-transparent hover:border-white/10 text-center w-full sm:w-auto"
+            >
+              Schedule a Call
+            </a>
+          </div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

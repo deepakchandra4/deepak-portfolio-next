@@ -21,13 +21,11 @@ import {
   SiTailwindcss,
   SiPostgresql,
   SiDocker,
-  SiOpenai,
   SiPostman,
   SiVercel,
   SiGit,
   SiReact,
   SiHtml5,
-  SiCss3,
   SiBootstrap,
   SiTensorflow,
   SiOpencv,
@@ -309,7 +307,7 @@ const matrixCategories: Category[] = [
       },
       {
         name: 'Claude & ChatGPT',
-        icon: SiOpenai,
+        icon: FaBrain,
         projects: 20,
         difficulty: 98,
         stack: ['System templates prompts', 'Advanced reasoning', 'Refactoring hooks'],
@@ -464,10 +462,10 @@ export default function Skills() {
                         </div>
                       </div>
 
-                      {/* Spark indicator */}
-                      <div className="flex items-center gap-1">
-                        <FaStar className={`text-xs ${isCurrentlyHovered ? 'text-primary animate-pulse' : 'text-gray-600'}`} />
-                        <span className="text-xs font-mono font-semibold text-gray-400">{skill.difficulty}%</span>
+                      {/* Active indicator */}
+                      <div className="flex items-center gap-1.5">
+                        <span className={`w-2 h-2 rounded-full ${isCurrentlyHovered ? 'bg-primary animate-pulse' : 'bg-gray-700'}`} />
+                        <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Active</span>
                       </div>
                     </div>
                   );
@@ -511,25 +509,20 @@ export default function Skills() {
                       </div>
                       <div className="bg-black/30 border border-white/5 p-3.5 rounded-xl text-center">
                         <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider block mb-1">
-                          CAPABILITY LEVEL
+                          INTEGRATION LEVEL
                         </span>
-                        <span className="text-lg font-bold text-primary font-mono">{hoveredSkill.difficulty}%</span>
+                        <span className="text-xs sm:text-sm font-bold text-primary font-mono uppercase block mt-1">Production Ready</span>
                       </div>
                     </div>
 
-                    {/* Skill Level Animated Bar */}
+                    {/* Skill Level info tags instead of progress bar */}
                     <div>
-                      <div className="flex justify-between text-xs font-mono text-gray-400 mb-2">
-                        <span>CAPABILITY INDEX</span>
-                        <span className="text-white font-semibold">{hoveredSkill.difficulty}%</span>
-                      </div>
-                      <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${hoveredSkill.difficulty}%` }}
-                          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-                          className="h-full bg-gradient-to-r from-primary to-accent"
-                        />
+                      <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider block mb-2">
+                        CORE FREELANCE COMPETENCY
+                      </span>
+                      <div className="flex items-center gap-2 p-3 rounded-xl bg-primary/10 border border-primary/20 text-primary">
+                        <FaStar className="text-xs animate-pulse flex-shrink-0" />
+                        <span className="text-xs font-mono font-semibold tracking-wider">Enterprise-Grade Design Patterns & APIs</span>
                       </div>
                     </div>
 

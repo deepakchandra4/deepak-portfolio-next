@@ -62,8 +62,9 @@ export default function Footer() {
             <ul className="space-y-2 text-sm font-light">
               {[
                 { name: 'Home', to: 'hero' },
-                { name: 'About', to: 'about' },
+                { name: 'Services', to: 'services' },
                 { name: 'Projects', to: 'projects' },
+                { name: 'About', to: 'about' },
                 { name: 'Skills', to: 'skills' },
                 { name: 'Contact', to: 'contact' },
               ].map((item) => (
@@ -86,11 +87,11 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold font-mono tracking-wider text-white mb-5">CAPABILITIES</h4>
             <ul className="space-y-2 text-sm font-light text-gray-400">
-              <li>AI-First Development</li>
-              <li>Full Stack Web Apps</li>
-              <li>Prompt Engineering</li>
-              <li>REST API Architecture</li>
-              <li>Database Schema Design</li>
+              <li>AI SaaS MVP Development</li>
+              <li>AI Agent Integration</li>
+              <li>Intelligent Automations</li>
+              <li>Custom Dashboard Systems</li>
+              <li>Scalable Cloud Architecture</li>
             </ul>
           </div>
 

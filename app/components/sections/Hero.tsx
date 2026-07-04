@@ -4,9 +4,9 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
 import NextLink from 'next/link';
-import { FaArrowDown, FaTerminal, FaPlay, FaCode, FaDatabase, FaServer, FaRobot } from 'react-icons/fa';
+import { FaArrowDown, FaTerminal, FaPlay, FaCode, FaDatabase, FaServer, FaRobot, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { SiGithub } from 'react-icons/si';
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,11 +85,11 @@ export default function Hero() {
             className="text-2xl sm:text-5xl font-extrabold tracking-tight mb-4 leading-[1.1]"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
-              AI-First Software Engineer
+              I Build AI-Powered SaaS Products,
             </span>
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
-              GenAI Application Developer
+              AI Agents & Intelligent Software
             </span>
           </motion.h1>
 
@@ -99,16 +99,16 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="text-gray-300 text-sm md:text-base font-mono font-medium tracking-tight mb-6 max-w-xl mx-auto md:mx-0 border-l border-primary/30 pl-4 text-left"
           >
-            Building Production-Ready Web Apps with AI, Full-Stack Engineering & Modern Developer Tools
+            Helping startups build production-ready applications using Next.js, TypeScript, Python, Node.js, PostgreSQL, LLMs, AI Agents, and Generative AI.
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-gray-400 text-sm md:text-base max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed font-light text-justify"
+            className="text-gray-400 text-sm md:text-base max-w-xl mx-auto md:mx-0 mb-8 leading-relaxed font-light text-justify"
           >
-            I combine software engineering fundamentals with an AI-first workflow to rapidly design, build, and ship modern applications. I specialize in Next.js, TypeScript, React, Node.js, and Python.
+            I combine software engineering fundamentals with an AI-first workflow to rapidly design, build, and ship modern applications. I specialize in turning complex requirements into scalable business solutions.
           </motion.p>
 
           {/* Interactive Liquid / Glowing Buttons */}
@@ -116,9 +116,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start items-center mb-12"
+            className="flex flex-wrap gap-4 justify-center md:justify-start items-center mb-8 w-full"
           >
-            {/* View My Projects Button */}
+            {/* View Case Studies Button */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative group w-full sm:w-auto">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-secondary to-accent rounded-full blur opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
               <ScrollLink
@@ -126,25 +126,38 @@ export default function Hero() {
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="relative flex items-center justify-center gap-2 px-8 py-3 bg-black rounded-full text-white text-sm font-semibold cursor-pointer border border-white/10 group-hover:border-transparent transition-all duration-300 w-full sm:w-auto"
+                className="relative flex items-center justify-center gap-2 px-6 py-3 bg-black rounded-full text-white text-sm font-semibold cursor-pointer border border-white/10 group-hover:border-transparent transition-all duration-300 w-full sm:w-auto"
               >
                 <FaPlay className="text-primary text-[10px]" />
-                <span>View My Projects</span>
+                <span>View Case Studies</span>
               </ScrollLink>
             </motion.div>
 
-            {/* Let's Build Something Button */}
+            {/* Hire Me Button */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
               <ScrollLink
                 to="contact"
                 smooth={true}
                 offset={-70}
                 duration={500}
-                className="flex items-center justify-center gap-2 px-8 py-3 bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-white/10 hover:text-white rounded-full text-gray-300 text-sm font-semibold transition-all duration-300 cursor-pointer w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-white/5 border border-white/10 hover:border-primary/40 hover:bg-white/10 hover:text-white rounded-full text-gray-300 text-sm font-semibold transition-all duration-300 cursor-pointer w-full sm:w-auto"
               >
                 <FaTerminal className="text-accent text-[10px]" />
-                <span>Let&apos;s Build Something</span>
+                <span>Hire Me</span>
               </ScrollLink>
+            </motion.div>
+
+            {/* GitHub Button */}
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+              <NextLink
+                href="https://github.com/deepakchandra4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-transparent hover:bg-white/5 rounded-full text-gray-400 hover:text-white text-sm font-semibold transition-all duration-300 border border-transparent hover:border-white/10 w-full sm:w-auto"
+              >
+                <SiGithub className="text-sm" />
+                <span>GitHub</span>
+              </NextLink>
             </motion.div>
           </motion.div>
 
@@ -153,11 +166,11 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex gap-6 justify-center md:justify-start"
+            className="flex gap-6 justify-center md:justify-start mb-10"
           >
             {[
               { icon: SiGithub, href: 'https://github.com/deepakchandra4' },
-              { icon: SiLinkedin, href: 'https://www.linkedin.com/in/deepakchandra4' },
+              { icon: FaLinkedin, href: 'https://www.linkedin.com/in/deepak-chandra-maurya-a03a21266?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' },
               { icon: FaXTwitter, href: 'https://x.com/deepakchandra41' },
             ].map((social, idx) => {
               const IconComponent = social.icon;
@@ -173,6 +186,35 @@ export default function Hero() {
                 </NextLink>
               );
             })}
+          </motion.div>
+
+          {/* Trust Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.45 }}
+            className="pt-6 border-t border-white/5 flex flex-wrap gap-3 justify-center md:justify-start items-center text-[10px] sm:text-xs font-mono text-gray-400"
+          >
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Available for Freelance</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <FaServer className="text-secondary text-[10px]" />
+              <span>Open to Remote Projects</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <FaRobot className="text-primary text-[10px]" />
+              <span>AI-first Workflow</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <FaPlay className="text-accent text-[10px] rotate-[-90deg]" />
+              <span>Fast Delivery</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <FaCode className="text-emerald-400 text-[10px]" />
+              <span>Production Ready</span>
+            </div>
           </motion.div>
         </div>
 

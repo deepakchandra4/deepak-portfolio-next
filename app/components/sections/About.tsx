@@ -3,13 +3,13 @@
 import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { FaBrain, FaCode, FaRocket, FaLaptopCode, FaRegLightbulb } from 'react-icons/fa';
-import { SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiDocker, SiOpenai, SiMongodb } from 'react-icons/si';
+import { SiNextdotjs, SiTypescript, SiNodedotjs, SiPython, SiPostgresql, SiDocker, SiMongodb } from 'react-icons/si';
 
 const stats = [
-  { label: 'Production-Level Projects', value: 3, prefix: '+' },
-  { label: 'Programming Languages', value: 4, prefix: '+' },
-  { label: 'Modern Technologies', value: 12, prefix: '+' },
-  { label: 'Workflow Paradigm', value: 100, prefix: '% AI' },
+  { label: 'SaaS & AI Products Launched', value: 9, prefix: '+' },
+  { label: 'Avg. MVP Delivery Speed', value: 3, prefix: ' Weeks' },
+  { label: 'Production-Grade Standard', value: 100, prefix: '%' },
+  { label: 'Workflow Integration', value: 100, prefix: '% AI-First' },
 ];
 
 const tickerIcons = [
@@ -19,7 +19,7 @@ const tickerIcons = [
   { icon: SiPython, name: 'Python' },
   { icon: SiPostgresql, name: 'PostgreSQL' },
   { icon: SiDocker, name: 'Docker' },
-  { icon: SiOpenai, name: 'OpenAI' },
+  { icon: FaBrain, name: 'OpenAI' },
   { icon: SiMongodb, name: 'MongoDB' },
 ];
 
@@ -68,7 +68,7 @@ export default function About() {
         >
           <h2 className="text-sm font-mono text-primary tracking-widest uppercase mb-3">PROFILE TELEMETRY</h2>
           <h3 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-            About Me
+            About My Work
           </h3>
           <div className="h-[2px] w-16 bg-primary mx-auto mt-4 rounded-full" />
         </motion.div>
@@ -86,24 +86,24 @@ export default function About() {
               <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-primary via-secondary to-accent" />
               <h4 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                 <FaBrain className="text-primary text-xl" />
-                <span>Who I Am</span>
+                <span>AI-First Product Engineer</span>
               </h4>
               <p className="text-gray-300 leading-relaxed font-light mb-6">
-                I&apos;m a software engineer passionate about combining artificial intelligence with modern web development to build intelligent digital products.
+                I build intelligent, production-ready software systems for startups and businesses. By combining software engineering fundamentals with product thinking and AI capabilities, I deliver high-performance applications that drive real business outcomes.
               </p>
 
               {/* Development Philosophy Quote */}
               <div className="my-6 p-4 rounded-xl border border-primary/20 bg-primary/5 text-left font-mono relative">
-                <span className="text-xs text-primary block mb-1.5">// DEVELOPMENT PHILOSOPHY</span>
+                <span className="text-xs text-primary block mb-1.5">// STRATEGIC FOCUS</span>
                 <blockquote className="text-base text-white font-semibold italic">
-                  &ldquo;AI accelerates development. Engineering ensures quality.&rdquo;
+                  &ldquo;AI automates execution. Product engineering guarantees scale, maintainability, and impact.&rdquo;
                 </blockquote>
               </div>
 
               <p className="text-gray-300 leading-relaxed font-light">
-                I use AI as a collaborative development partner—not a replacement for software engineering principles. Every project is designed with scalability, maintainability, clean architecture, and user experience in mind.
+                I help SaaS teams, agencies, and small businesses prototype rapidly and scale confidently. Every line of code is written with clean architecture, security, and long-term maintainability in mind.
                 <br /><br />
-                My expertise spans full-stack web development, REST APIs, AI integrations, prompt engineering, database design, authentication systems, and deploying production-ready applications. I enjoy transforming ideas into products using an iterative AI-assisted workflow while maintaining professional engineering standards.
+                My workflow is built around rapid iteration, robust automated testing, and seamless user experiences. Instead of just writing code, I partner with founders to analyze requirements and implement AI integrations that optimize operations and create competitive advantages.
               </p>
             </div>
 
@@ -114,8 +114,8 @@ export default function About() {
                   <FaLaptopCode className="text-lg" />
                 </div>
                 <div>
-                  <h5 className="font-semibold text-white">Full Stack Engineering</h5>
-                  <p className="text-xs text-gray-400 mt-1">Production-ready system deployment, scalable databases, clean REST structures.</p>
+                  <h5 className="font-semibold text-white">Product Thinking</h5>
+                  <p className="text-xs text-gray-400 mt-1">Designing with users in mind, focusing on metrics, flows, and scalability.</p>
                 </div>
               </div>
               <div className="glass-card p-5 rounded-xl border border-white/5 flex gap-4 items-start">
@@ -123,8 +123,8 @@ export default function About() {
                   <FaRegLightbulb className="text-lg" />
                 </div>
                 <div>
-                  <h5 className="font-semibold text-white">AI-First Workflows</h5>
-                  <p className="text-xs text-gray-400 mt-1">Accelerated prototyping and code execution backed by rigid validation constraints.</p>
+                  <h5 className="font-semibold text-white">Clean & Scalable Code</h5>
+                  <p className="text-xs text-gray-400 mt-1">Ensuring long-term maintainability using standard design patterns.</p>
                 </div>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function About() {
                 className="glass-card p-6 rounded-2xl text-center border border-white/5 hover:border-primary/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.05)] transition-all duration-300"
               >
                 <div className="text-3xl sm:text-4xl font-extrabold text-white mb-2 font-mono">
-                  {stat.value === 100 ? (
+                  {stat.label.includes('Workflow') ? (
                     <span>AI-First</span>
                   ) : (
                     <AnimatedCounter value={stat.value} prefix={stat.prefix} />

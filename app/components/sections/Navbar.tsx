@@ -27,8 +27,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', to: 'hero' },
-    { name: 'About', to: 'about' },
+    { name: 'Services', to: 'services' },
     { name: 'Projects', to: 'projects' },
+    { name: 'About', to: 'about' },
     { name: 'Skills', to: 'skills' },
     { name: 'Contact', to: 'contact' },
   ];
@@ -83,13 +84,15 @@ const Navbar = () => {
                 )}
               </ScrollLink>
             ))}
-            <NextLink
-              href="/DeepakCV.pdf"
-              target="_blank"
-              className="ml-4 px-5 py-1.5 bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold rounded-full hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300 border border-primary/20"
+            <ScrollLink
+              to="contact"
+              smooth={true}
+              duration={500}
+              offset={-80}
+              className="ml-4 px-5 py-1.5 bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold rounded-full hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all duration-300 border border-primary/20 cursor-pointer"
             >
-              Resume
-            </NextLink>
+              Let&apos;s Talk
+            </ScrollLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -144,14 +147,16 @@ const Navbar = () => {
                   {link.name}
                 </ScrollLink>
               ))}
-              <NextLink
-                href="/DeepakCV.pdf"
-                target="_blank"
+              <ScrollLink
+                to="contact"
+                smooth={true}
+                duration={500}
+                offset={-80}
                 onClick={() => setIsMenuOpen(false)}
-                className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white text-xl rounded-full hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all font-semibold mt-4"
+                className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white text-xl rounded-full hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all font-semibold mt-4 cursor-pointer text-center"
               >
-                Resume
-              </NextLink>
+                Let&apos;s Talk
+              </ScrollLink>
             </motion.div>
           </motion.div>
         )}
