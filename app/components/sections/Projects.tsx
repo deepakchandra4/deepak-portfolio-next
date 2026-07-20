@@ -24,22 +24,38 @@ interface Project {
 
 const aiProductsData: Project[] = [
   {
-    title: "GapCheck AI — AI Resume-JD Match Analyzer",
-    image: "/images/projects/gapcheck-ai-v2.png",
+    title: "Syncrole AI — AI Resume-JD Match Analyzer",
+    image: "/images/projects/syncrole-ai.png",
     description:
-      "A high-fidelity Next.js platform that evaluates candidate resumes against job descriptions. Powered by Google Gemini, it parses PDFs, highlights missing skills, checks ATS compliance, and generates predictive interview guides.",
-    technologies: ["Next.js", "TypeScript", "Google Gemini API", "Tailwind CSS", "Framer Motion", "PDF Parser"],
-    achievements: [
-      "Integrated Gemini API for deep semantic analysis of resumes against job requirements",
-      "Extracted structured competency gaps and ATS compliance scores from PDF uploads",
-      "Generated personalized, predictive interview guides based on resume gaps",
+      "A decoupled full-stack AI platform that analyzes resumes against job descriptions using Next.js and FastAPI. Powered by Google Gemini 2.5 Flash, it extracts PDF content, evaluates ATS compatibility, identifies competency gaps, and generates personalized interview preparation guides.",
+
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "Google Gemini 2.5 Flash",
+      "Tailwind CSS",
+      "Framer Motion",
+      "PyPDF",
+      "Render",
+      "Vercel"
     ],
-    Live: "https://gapcheck-ai.vercel.app/",
-    problem: "Job seekers struggle to understand how well their profiles match specific job specifications, resulting in high rejection rates from automated applicant tracking systems (ATS) due to keyword mismatches.",
-    solution: "Developed an AI-driven analyzer that extracts resume content and compares it semantically to target JDs, returning detailed compliance ratings, skill alignment gaps, and real-time interview prep questions.",
-    architecture: "Next.js frontend connects to serverless backend endpoints. The backend extracts text using a PDF parser and channels it to a Google Gemini API structured prompt pipeline, guaranteeing reliable, typed JSON output.",
-    businessImpact: "Boosts ATS compliance rates by up to 45% and reduces candidate screening preparation times.",
-    challengesSolved: "Designed strict prompt structures to ensure the LLM consistently returns stable JSON under varying resume formatting styles without timing out.",
+
+    achievements: [
+      "Built a decoupled architecture using Next.js and FastAPI for scalable AI processing",
+      "Integrated Google Gemini 2.5 Flash with structured JSON schema validation for reliable AI responses",
+      "Implemented asynchronous PDF parsing with PyPDF for efficient resume processing",
+      "Generated ATS optimization recommendations, competency gap analysis, and AI-powered interview guides",
+      "Configured automated backend deployment using Render Blueprint (render.yaml) and frontend deployment on Vercel"
+    ],
+
+    Live: "https://syncrole-ai.vercel.app/",
+    problem: "Job seekers often don't know how well their resumes match a specific job description, leading to poor ATS scores and missed interview opportunities.",
+    solution: "Developed an AI-powered Resume-JD analyzer that extracts resume content, semantically compares it against job descriptions, identifies missing skills, evaluates ATS compatibility, and generates personalized interview preparation.",
+    architecture: "A decoupled architecture where the Next.js frontend communicates with a FastAPI backend through REST APIs. The backend asynchronously parses PDF resumes using PyPDF, processes them with Google Gemini 2.5 Flash using structured JSON output, and returns strongly typed results. The frontend is deployed on Vercel while the backend runs on Render.",
+    businessImpact: "Enables candidates to optimize resumes before applying, improve ATS compatibility, identify missing competencies, and prepare more effectively for interviews.",
+    challengesSolved: "Engineered deterministic prompt schemas for consistent JSON responses, implemented asynchronous document processing, and designed a scalable frontend-backend architecture for AI workloads."
   },
   {
     title: "AI News Intelligence Platform",
